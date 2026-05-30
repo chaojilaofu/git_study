@@ -1,14 +1,61 @@
 # OS generated files
-Thumbs.db
-Desktop.ini
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Windows image file caches
+Thumbs.db:encryptable
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
 
 # Editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 *.swp
 *.swo
 *~
 
 # Build / temp
+dist/
+build/
+out/
+*.pyc
+__pycache__/
+*.class
+*.o
+*.obj
 *.tmp
 *.temp
 *.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
