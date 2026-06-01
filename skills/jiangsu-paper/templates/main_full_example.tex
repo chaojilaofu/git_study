@@ -1,0 +1,441 @@
+% !TEX program = pdflatex
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3.0cm, right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+% CJK fonts handled by ctex fontset (SimSun/SimHei/KaiTi)
+% English font: Times New Roman
+\usepackage{times}
+
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs, array, multirow}
+\usepackage{enumitem, caption, subcaption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{fancyhdr, tocloft, float}
+\usepackage{longtable, makecell}
+\usepackage{threeparttable}
+\usepackage{hyperref}
+
+% ============ 页眉页脚 ============
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\zihao{6}\rmfamily 江苏大学课程论文}
+\fancyhead[R]{\zihao{6}\rmfamily 氢能在工业脱碳中的应用研究}
+\fancyfoot[C]{\zihao{6}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\zihao{6}\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+\ctexset{
+    section = {
+        format = \heiti\zihao{-2}\centering,
+        beforeskip = 12bp,
+        afterskip = 12bp,
+        aftername = \quad,
+    },
+    subsection = {
+        format = \songti\bfseries\zihao{4}\raggedright,
+        beforeskip = 6bp,
+        afterskip = 6bp,
+        aftername = \quad,
+    },
+    subsubsection = {
+        format = \songti\bfseries\zihao{-4}\raggedright,
+        beforeskip = 6bp,
+        afterskip = 6bp,
+        aftername = \quad,
+    },
+}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\contentsname}{\centering\zihao{3}\bfseries 目\quad 录}
+\captionsetup[table]{font={small,rm},labelsep=quad}
+\captionsetup[figure]{font={small,rm},labelsep=quad}
+\newcommand{\COO}{CO\textsubscript{2}}
+\graphicspath{{figures/}}
+\begin{document}
+% ==================== 封面 ====================
+\thispagestyle{empty}
+\begin{center}
+    {\heiti\zihao{-2} 氢能在工业脱碳中的应用研究}
+
+    \vspace{24bp}
+
+    {\zihao{-4}
+    \renewcommand{\arraystretch}{1.8}
+    \begin{tabular}{r@{\hspace{0.5em}}lr@{\hspace{1.5cm}}r@{\hspace{0.5em}}l}
+        专业班级 & ：微电子科学与工程 && 学生姓名 & ：付轩羽 \\
+        指导教师 & ：倪国松 && 职\qquad 称 & ：讲师 \\
+    \end{tabular}
+    }
+\end{center}
+
+\vspace{12bp}
+
+% ==================== 原创性声明 ====================
+{\heiti\zihao{-2}\centering 原创性声明\par}
+
+\vspace{6bp}
+
+本人郑重声明：所呈交的课程论文，是本人在指导教师指导下独立进行研究工作所取得的成果。
+除文中已经注明引用的内容外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。
+对本论文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的
+法律结果由本人承担。
+
+\vspace{6bp}
+
+% ==================== 中文摘要 ====================
+\begin{center}
+    {\heiti\zihao{4} 摘\quad 要}
+\end{center}
+
+
+工业部门是全球碳排放的主要来源之一，约占全球碳排放总量的30\%，中国的这一比例更高达约70\%。在"双碳"目标（碳达峰、碳中和）的背景下，工业脱碳已成为中国实现绿色低碳转型的关键战场。氢能作为一种清洁、高效的二次能源，兼具燃料与工业原料的双重属性，在钢铁、化工、水泥等高碳排放行业的深度脱碳中具有不可替代的作用。
+
+本文系统梳理了全球工业碳排放现状与氢能产业发展态势，深入分析了氢能在钢铁冶金（氢直接还原铁）、化工合成（绿氢制氨、绿氢制甲醇）以及工业高温热源替代等关键场景中的应用技术路径。通过建立技术经济分析框架，评估了绿氢成本下降趋势及其与碳市场机制的协同效应，预测了氢能工业应用的碳减排潜力与时间表。研究结果表明：（1）氢能在钢铁和化工行业的深度脱碳中具有得天独厚的优势，氢直接还原铁技术可减排约95\%的\COO ，绿氢合成氨可实现近零碳排放；（2）绿氢成本预计在2030年前后达到与灰氢的成本平价点（约15--20元/kg H\textsubscript{2}），碳价的引入将加速这一进程；（3）在政策支持和产业协同的推动下，氢能工业应用有望在2030年进入快速推广期，2050年可实现年减排\COO 约18亿吨。最后，本文借鉴日本、欧盟、美国等国家和地区的氢能战略经验，提出了促进中国氢能工业应用的六项政策建议。
+
+\vspace{12bp}
+\noindent{\heiti\zihao{4} 关键词：} 氢能；工业脱碳；碳中和；氢冶金；绿氢
+
+% ==================== 目录 ====================
+\newpage
+\tableofcontents
+% ==================== 正文 ====================
+\section{绪论}
+\subsection{研究背景与意义}
+
+全球气候变化已成为21世纪人类面临的最严峻挑战之一。根据联合国政府间气候变化专门委员会（IPCC）第六次评估报告，全球平均气温较工业化前水平已升高约1.1\textdegree C，人类活动排放的温室气体是导致全球变暖的主要原因。为应对气候变化，截至2024年，已有超过140个国家和地区提出了碳中和目标。中国作为全球最大的碳排放国，于2020年9月正式提出"2030年前实现碳达峰、2060年前实现碳中和"的战略目标（简称"双碳"目标）。
+
+在此背景下，工业部门作为能源消耗和碳排放的主要领域，面临着前所未有的脱碳压力。根据国际能源署（IEA）数据，全球工业部门碳排放约占能源相关碳排放总量的30\%，而在中国，工业碳排放占全国碳排放总量的约70\%。钢铁、化工、水泥三大行业是工业碳排放的主要来源，合计占工业碳排放的65\%以上。
+
+传统的工业脱碳手段\cite{luo2023}，如能效提升、燃料替代和过程优化等，虽然能够带来一定程度的减排效果，但其减排潜力有限，难以支撑深度脱碳目标的实现。在此背景下，氢能作为一种清洁、高效、来源广泛的二次能源，开始受到全球范围内的高度关注。氢能不仅可以通过燃料电池发电实现零碳排放，更可以作为工业原料（如合成氨、甲醇生产）和还原剂（如钢铁冶炼）从源头消除碳排放。这种"燃料+原料"的双重属性，使得氢能在工业脱碳中具有不可替代的战略地位。
+
+本研究以"双碳"目标为宏观背景，聚焦氢能在工业脱碳中的应用，系统分析其在钢铁、化工等高碳排放行业中的技术路径、经济可行性和减排潜力，旨在为中国工业领域的绿色低碳转型提供科学参考和政策建议。
+
+\subsection{国内外研究现状}
+
+近年来，国内外学者围绕氢能产业发展和工业脱碳路径开展了大量研究。在氢能发展战略层面，项目综合报告编写组在《中国长期低碳发展战略与转型路径研究》中系统阐述了中国实现碳中和的总体路径。孟翔宇等深入分析了"双碳"目标下中国氢能发展的战略定位与技术路线选择。刘玮等综合评述了我国低碳清洁氢能的发展进展与未来展望。
+
+在国际经验层面，万燕鸣等分析了全球主要国家的氢能发展战略及其对中国的启示。李东坡等研究了日本实现碳中和目标的战略选择，重点探讨了日本"氢能社会"构想及其在工业领域的具体部署。刘平等考察了日本《2050年实现碳中和的绿色成长战略》，分析了其产业绿色发展的政策框架。曲建升等分析了国际碳中和战略行动与科技布局，提出了对我国的启示建议。
+
+在技术路径层面，王振华等综述了氢能的应用现状及展望，涵盖了制氢、储运和利用全产业链。韩红梅等分析了我国氢气的生产和利用现状。雷海涛从技术经济角度对中国制氢产业的技术路径优化进行了系统研究。赵志耘等从技术经济学视角探讨了碳中和的实现路径和方法论问题。杨丹辉等探讨了氢能产业高质量发展的产业链建构与重点场景。
+
+总体而言，现有研究从不同视角为氢能发展和工业脱碳提供了重要参考，但鲜有研究系统地将氢能的多元工业应用场景置于统一的碳减排分析框架下进行综合评估。本文试图弥补这一不足。
+
+\subsection{研究内容与方法}
+
+本文采用文献研究、技术经济分析和国际比较研究相结合的方法，系统探讨氢能在工业脱碳中的应用。主要研究内容包括：（1）全球工业碳排放现状分析与脱碳挑战识别；（2）氢能产业技术现状与发展态势分析；（3）氢能在钢铁、化工等主要工业场景中的应用分析；（4）技术经济评估与国际经验借鉴，提出政策建议。
+
+\section{工业碳排放现状与氢能发展态势}
+\subsection{全球工业碳排放现状}
+
+工业部门是全球碳排放的主要来源之一。根据IEA数据，2023年全球能源相关\COO 排放量约为374亿吨，其中工业部门贡献约92亿吨，占比约25\%--30\%\cite{iea2023}。从行业分布来看，钢铁行业是最大单一来源，约占工业碳排放的25\%；水泥行业次之，约占20\%；化工行业约占15\%\cite{ipcc2022}。图1展示了2010年至2022年间全球工业\COO 排放的变化趋势。
+
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{fig1_global_emissions.jpg}
+    \captionof{figure}{全球工业部门CO\textsubscript{2}排放量（2010--2022）}\label{fig:global_emissions}
+\end{center}
+
+中国是全球最大的工业碳排放国，工业\COO 排放占全球工业排放的35\%以上。图2展示了中国工业碳排放的行业结构，钢铁（28\%）、水泥（18\%）、化工（15\%）三大行业合计占工业碳排放的61\%，是工业脱碳的重中之重。
+
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{fig2_china_structure.jpg}
+    \captionof{figure}{中国工业碳排放结构（2023年）}\label{fig:china_structure}
+\end{center}
+
+\subsection{氢能产业发展现状与趋势}
+
+当前全球氢气的年产量约为9500万吨，主要用于炼油、合成氨和甲醇生产等领域，绝大部分由化石能源制取（灰氢），\COO 排放量高达约9亿吨/年。在碳中和目标驱动下，全球氢能需求预计将大幅增长\cite{liu2022}。图3展示了中国氢能需求的预测趋势及绿氢占比的变化。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig3_h2_demand.jpg}
+    \captionof{figure}{中国氢能需求预测及绿氢占比（2025--2060）}\label{fig:h2_demand}
+\end{center}
+
+图4展示了绿氢与灰氢生产成本的变化趋势。随着电解槽技术进步和可再生能源发电成本下降，绿氢成本呈现快速下降趋势\cite{lei2022}。预计到2030年前后，绿氢成本有望在碳价配合下与灰氢实现成本平价。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig4_cost_trend.jpg}
+    \captionof{figure}{绿氢与灰氢生产成本趋势对比}\label{fig:cost_trend}
+\end{center}
+
+\subsection{制氢结构转型}
+
+中国当前的制氢结构以煤制氢为主（约58\%），电解水制氢占比仅为约4\%。图7展示了中国制氢结构从2023年到2050年的预期变迁。预计到2050年，电解水制氢（绿氢）将占78\%以上，煤制氢和天然气制氢占比将分别下降至约3\%和2\%。
+
+\begin{center}
+    \includegraphics[width=0.95\textwidth]{fig7_h2_structure.jpg}
+    \captionof{figure}{中国制氢结构变迁（2023$\rightarrow$2050）}\label{fig:h2_structure}
+\end{center}
+
+\subsection{全球氢能投资与政策态势}
+
+近年来，全球主要国家和地区纷纷加大氢能投资力度。图8展示了主要国家和地区的氢能投资规模。图10梳理了氢能政策发展的关键时间节点。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig8_investment.jpg}
+    \captionof{figure}{主要国家/地区氢能投资规模（截至2024年）}\label{fig:investment}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=0.95\textwidth]{fig10_policy_timeline.jpg}
+    \captionof{figure}{主要国家/地区氢能政策发展时间线}\label{fig:policy_timeline}
+\end{center}
+
+全球电解槽装机容量也呈现爆发式增长态势。图11显示，预计到2030年全球电解槽装机容量将达到约19~GW，2050年有望超过95~GW。中国凭借庞大的制造业基础和可再生能源优势，预计将占全球电解槽装机容量的40\%--50\%。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig11_electrolyzer.jpg}
+    \captionof{figure}{全球电解槽装机容量预测（2022--2050）}\label{fig:electrolyzer}
+\end{center}
+\section{氢能在钢铁工业脱碳中的应用}
+\subsection{钢铁行业碳排放特征}
+
+钢铁行业是全球工业碳排放的最大单一来源，约占全球\COO 排放总量的7\%--9\%。中国是全球最大的钢铁生产国，粗钢产量占全球的54\%以上，钢铁行业碳排放占全国碳排放总量的约15\%--18\%\cite{project2020}。中国钢铁行业碳排放强度高的根本原因在于高炉-转炉长流程占粗钢总产量的约89\%，而碳排放强度较低的电弧炉短流程仅占约11\%。
+
+钢铁行业的碳排放主要来源于两个环节：一是高炉炼铁过程中焦炭作为还原剂与铁矿石中的氧反应生成\COO （过程排放，约占60\%--70\%）；二是为高炉和转炉提供高温热能所消耗的化石燃料（能源排放，约占30\%--40\%）。这一排放结构特征决定了钢铁行业的深度脱碳必须从"还原剂替代"和"能源替代"两个维度同时推进。
+
+\subsection{氢直接还原铁技术}
+
+氢直接还原铁（H\textsubscript{2}-DRI）技术是当前最具前景的钢铁低碳冶炼路径之一\cite{wang2020}。该技术利用氢气替代传统高炉工艺中的焦炭作为还原剂，将铁矿石（Fe\textsubscript{2}O\textsubscript{3}）还原为直接还原铁（DRI），其化学反应方程式为：
+
+\begin{equation}
+    \text{Fe}_2\text{O}_3 + 3\text{H}_2 \rightarrow 2\text{Fe} + 3\text{H}_2\text{O}
+\end{equation}
+
+与传统高炉-转炉工艺（以碳为还原剂，产物为\COO ）相比，H\textsubscript{2}-DRI工艺的还原产物为水，从化学原理上根本消除了过程碳排放。当使用绿氢时，整个钢铁冶炼过程可实现近零碳排放。
+
+图9对四种钢铁生产路线的\COO 排放强度进行了对比。可以看出，传统高炉-转炉工艺的碳排放强度约为2.0~t\COO/t粗钢，而H\textsubscript{2}-DRI工艺仅为约0.1~t\COO/t粗钢，减排幅度高达95\%。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig9_steel_compare.jpg}
+    \captionof{figure}{不同钢铁生产路线CO\textsubscript{2}排放对比}\label{fig:steel_compare}
+\end{center}
+
+\subsection{技术进展与国际实践}
+
+目前全球已有多个H\textsubscript{2}-DRI示范项目正在推进。瑞典SSAB主导的HYBRIT项目是全球首个实现无化石能源钢铁生产的中试项目，已于2021年成功生产出首批氢基直接还原铁。德国蒂森克虏伯和萨尔茨吉特等钢铁巨头也在积极推进氢冶金转型。在中国，河钢集团于2023年启动了120万吨级氢冶金示范工程\cite{meng2022}。
+
+\subsection{中国钢铁行业氢能应用路径}
+
+中国钢铁行业推进氢冶金转型面临的主要挑战包括：绿氢供应不足且成本偏高、现有高炉资产沉没成本巨大等。结合中国国情，钢铁行业的氢能应用应遵循"先立后破、循序推进"的原则：近期（2025--2030）在现有高炉中开展富氢喷吹，同步推进H\textsubscript{2}-DRI中试示范；中期（2031--2040）在可再生资源富集地区布局商业化H\textsubscript{2}-DRI生产线；远期（2041--2060）全面推进H\textsubscript{2}-DRI和电弧炉短流程对传统工艺的替代。
+
+\section{氢能在化工行业脱碳中的应用}
+\subsection{化工行业碳排放特征与氢能机遇}
+
+化工行业是仅次于钢铁的第二大工业碳排放源，约占全球工业碳排放的15\%\cite{zhao2021}。中国化工行业的碳排放更为集中，主要包括合成氨（约占35\%）、甲醇（约占15\%）、乙烯（约占12\%）等生产过程。与钢铁行业类似，化工行业的碳排放也同时来源于化石能源作为"燃料"和"原料"的双重使用。
+
+氢能在化工行业脱碳中的独特优势在于：对于合成氨和甲醇等氢基化工产品，氢本身就是核心原料，其来源的绿色化可以直接消除产品碳足迹；对于乙烯等需要高温裂解的生产过程，氢能可以作为清洁燃料替代化石燃料供热。
+
+\subsection{绿氢制氨}
+
+合成氨是全球产量最大的化工产品之一，年产量约1.8亿吨，其中约80\%用于化肥生产\cite{han2021}。传统Haber-Bosch工艺以煤或天然气为原料制取氢气，\COO 排放强度约为2.0--3.5~t\COO/t~NH\textsubscript{3}。全球合成氨行业的\COO 排放量约为5亿吨/年。
+
+绿氢制氨技术路线的核心是用可再生能源电解水生产的绿氢替代化石能源制取的灰氢。当绿氢与空气中的氮气在改进的Haber-Bosch反应器中合成氨时，整个过程可实现近零碳排放。此外，新兴的电化学合成氨技术虽然目前技术成熟度较低（TRL~3--4），但长期来看有望绕过Haber-Bosch法的高温高压条件。
+
+\subsection{绿氢制甲醇}
+
+甲醇是重要的基础化工原料和潜在的清洁液体燃料，年产量约1亿吨。绿氢制甲醇有两条技术路径：一是用绿氢与工业捕集的\COO 通过逆水煤气变换反应制取电制甲醇（e-Methanol）；二是用绿氢与生物质气化产生的合成气耦合生产生物甲醇（bio-Methanol）。e-Methanol路线不仅实现了甲醇生产的脱碳，还通过\COO 利用实现了"负碳"效果。
+
+\subsection{中国化工行业氢能替代路线图}
+
+考虑到中国化工行业体量庞大、现有资产投资巨大等现实约束，化工行业的氢能替代应分阶段推进：近期（2025--2030）以绿氢制氨为优先突破口，在西北、内蒙古等可再生资源富集地区建设示范项目；中期（2031--2040）扩大绿氢制氨和绿氢制甲醇的商业化规模；远期（2041--2060）全面实现化工行业的绿氢替代，构建以绿氢为核心的现代绿色化工产业体系。
+\section{氢能工业应用的经济性与技术路径}
+\subsection{碳减排潜力综合评估}
+
+图5对氢能工业应用在不同行业、不同时间阶段的碳减排潜力进行了综合评估。从时间维度看，氢能的碳减排贡献呈现显著的阶段性递增特征：短期（2025--2030）可在钢铁和化工行业实现年减排约1.5亿吨\COO ，中期（2031--2040）年减排量可增长至约6亿吨\COO ，远期（2041--2060）有望达到年减排约18亿吨\COO 。从行业维度看，钢铁行业始终是最大的减排贡献者，约占氢能工业减排总量的40\%--50\%，化工业次之。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig5_reduction.jpg}
+    \captionof{figure}{氢能工业应用分阶段碳减排潜力}\label{fig:reduction}
+\end{center}
+
+\subsection{主要技术路径对比}
+
+图6对主要脱碳技术路径的碳减排潜力和减排成本进行了对比分析。氢直接还原铁（H\textsubscript{2}-DRI）的减排潜力最高（约95\%），减排成本居中（约450元/t\COO ）；氢基合成氨和氢基甲醇的减排潜力分别为90\%和80\%，成本在300--350元/t\COO 区间；CCUS作为对照技术的减排潜力约为70\%，但成本高达约500元/t\COO 。综合来看，氢能替代路线在减排深度方面具有明显优势\cite{yang2023}。
+
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{fig6_tech_compare.jpg}
+    \captionof{figure}{工业脱碳主要技术路径对比}\label{fig:tech_compare}
+\end{center}
+
+\subsection{碳价对氢能经济性的影响}
+
+碳定价机制是推动氢能工业应用经济性改善的关键制度工具。图12展示了在不同碳价水平下，绿氢和灰氢的制取综合成本变化趋势。当碳价为0时，绿氢成本约为18~元/kg~H\textsubscript{2}，显著高于灰氢的约12~元/kg~H\textsubscript{2}。随着碳价上升，灰氢成本快速增加，而绿氢成本保持基本稳定。当碳价达到约300~元/t\COO 时，两条成本曲线出现交叉，即绿氢与灰氢实现成本平价。
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{fig12_carbon_price.jpg}
+    \captionof{figure}{碳价对绿氢-灰氢经济性的影响}\label{fig:carbon_price}
+\end{center}
+
+这一分析表明，碳市场不仅是减排的制度保障，更是氢能经济性的重要"催化剂"。当前中国全国碳市场的碳价水平约为70--80~元/t\COO ，与实现氢能经济性的"临界碳价"（约300~元/t\COO ）仍有较大差距。稳步提升碳价水平、扩大碳市场覆盖行业范围，对于加速氢能工业应用具有重要的现实意义。
+
+\subsection{技术成熟度与推广路线}
+
+图14以技术就绪度（TRL）为纵轴、预期大规模推广年份为横轴，展示了12项关键氢能技术的成熟度分布。碱性电解制氢和PEM电解制氢已进入商业化阶段（TRL~7--9），预计2025年前后可大规模推广；氢基合成氨、氢直接还原铁等技术成熟度中等（TRL~5--7），预计2026--2028年可进入规模应用；SOEC电解、固态储氢等技术仍处研发阶段（TRL~3--4），大规模推广需至2030年之后。
+
+\begin{center}
+    \includegraphics[width=0.95\textwidth]{fig14_tech_maturity.jpg}
+    \captionof{figure}{氢能关键技术成熟度与预期大规模推广时间}\label{fig:tech_maturity}
+\end{center}
+
+\subsection{工业氢能需求分行业预测}
+
+图15展示了中国工业领域氢能需求量的分行业预测。钢铁行业（氢冶金）是工业氢能需求的绝对主体，需求量从2025年的约50万吨/年增长至2050年的约1300万吨/年，占比超过50\%。化工行业（合成氨和甲醇）次之，2050年需求量将达650万吨/年。
+
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{fig15_industry_demand.jpg}
+    \captionof{figure}{中国工业氢能需求量分行业预测（2025--2050）}\label{fig:industry_demand}
+\end{center}
+
+\subsection{减排潜力行业分布}
+
+图13展示了各工业子行业应用氢能的减排潜力评估。钢铁行业（H\textsubscript{2}-DRI）的年碳减排潜力最大，约为6.5亿吨\COO 。化工行业中的合成氨和甲醇生产分别具有约3.2亿吨和2.1亿吨\COO 的年减排潜力。水泥、玻璃和有色金属冶炼等行业的减排潜力为0.6--1.8亿吨\COO 。
+
+\begin{center}
+    \includegraphics[width=0.85\textwidth]{fig13_sector_potential.jpg}
+    \captionof{figure}{工业子行业氢能应用碳减排潜力评估}\label{fig:sector_potential}
+\end{center}
+
+\section{国际经验借鉴与政策建议}
+\subsection{日本："氢能社会"战略}
+
+日本是全球最早将氢能上升为国家战略的国家之一。2017年发布《氢能基本战略》，2021年进一步发布《绿色成长战略》，将氢能列为14个重点绿色增长领域之一，设定了2030年氢气供应量达300万吨/年、2050年达2000万吨/年的目标\cite{liu_ping2022}。日本制铁和JFE钢铁等企业正在推进高炉氢还原技术开发\cite{li2022}。
+
+\subsection{欧盟：绿氢驱动的工业脱碳}
+
+欧盟于2020年发布《欧盟氢能战略》，2022年REPowerEU计划进一步将2030年绿氢产能目标提升至2000万吨\cite{irena2022}。欧盟的氢能工业应用具有鲜明的"绿氢驱动"特征，氢能优先应用于难以电气化的工业领域。HYBRIT、SALCOS、H2~Green~Steel等旗舰项目代表了欧盟的前沿探索\cite{qu2022}。
+
+\subsection{美国：大规模财政激励}
+
+美国通过《通胀削减法案》（2022年）中45V条款\cite{hydrogen2021}为清洁氢气提供最高3美元/kg~H\textsubscript{2}的生产税收抵免。在这一政策激励下，美国已规划建设多个区域性清洁氢能中心（H2Hubs）。美国模式的核心特点是"财政激励+区域中心+多元应用"的组合策略\cite{wan2022}。
+
+\subsection{对中国的启示与政策建议}
+
+基于上述研究和国际经验借鉴，提出以下六项政策建议：
+
+\textbf{第一，制定工业领域氢能应用专项规划。}建议在《氢能产业发展中长期规划》基础上，制定《工业领域氢能应用专项实施方案》，明确钢铁、化工、建材等重点行业的氢能替代时间表和阶段性目标。
+
+\textbf{第二，加快碳市场建设并推动碳价合理上升。}尽快将钢铁、化工、水泥等高排放行业纳入全国碳排放权交易市场。研究建立碳价下限机制，引导碳价逐步向约300元/t\COO 的水平靠拢。
+
+\textbf{第三，加大关键核心技术攻关力度。}设立国家级氢冶金、绿氢化工等重点研发计划，集中力量突破质子交换膜、SOEC电解、固态储氢等"卡脖子"技术。
+
+\textbf{第四，构建氢能基础设施网络。}统筹规划氢能"制-储-输-用"全链条基础设施布局，在钢铁、化工产业集聚区建设区域性氢能供应中心。
+
+\textbf{第五，完善标准法规与安全管理体系。}加快制定氢能工业应用的技术标准和安全规范，建立健全氢能全产业链安全监测监管机制。
+
+\textbf{第六，深化国际合作与技术交流。}积极参与国际氢能技术标准制定，加强与日本、欧盟等在氢冶金、绿氢化工等领域的技术合作\cite{zhang2021}。
+\section{结论}
+\subsection{主要结论}
+
+本文以"双碳"目标为宏观背景，系统研究了氢能在工业脱碳中的应用，主要得出以下结论：
+
+\begin{enumerate}[label=(\arabic*)]
+    \item \textbf{工业脱碳是实现"双碳"目标的关键战场，氢能具有不可替代的作用。}
+        工业部门贡献了全球约30\%、中国约70\%的碳排放。氢能兼具"燃料+原料"双重属性，在钢铁冶金和化工合成领域具有独特优势，可从源头消除碳排放。
+
+    \item \textbf{绿氢成本有望在2030年前后实现经济性突破。}
+        随着电解槽技术进步和可再生能源电价走低，预计2030年绿氢成本可降至14--16~元/kg~H\textsubscript{2}。当碳价达到约300~元/t\COO 时，绿氢与灰氢可实现综合成本平价。
+
+    \item \textbf{氢能的碳减排潜力巨大且时序明确。}
+        短期（2025--2030）可年减排约1.5亿吨\COO ，中期（2031--2040）增至约6亿吨\COO ，远期（2041--2060）有望达到年减排约18亿吨\COO ，是工业碳中和的核心技术路径。
+
+    \item \textbf{技术路径选择应坚持差异化策略。}
+        碱性电解和PEM电解（TRL~7--9）应重点推动规模化部署；H\textsubscript{2}-DRI和氢基合成氨（TRL~5--7）应加大示范支持；SOEC和固态储氢（TRL~3--4）应加强基础研究。
+
+    \item \textbf{国际经验为中国提供了重要借鉴。}
+        日本的"氢能社会"战略、欧盟的绿氢工业脱碳路径、美国的大规模财政激励，为中国完善氢能政策体系提供了有益参考。
+\end{enumerate}
+
+\subsection{研究展望}
+
+本研究还存在以下不足，有待后续深入探索：（1）对氢能工业应用的区域差异化研究不足，不同地区的资源禀赋和产业结构差异的影响需要进一步分析；（2）技术经济评估中未充分考虑技术学习曲线的区域异质性和产业链外部性；（3）对氢能应用的社会经济影响评估不够深入。未来研究可在这些方向上进行拓展和深化。
+
+\vspace{6bp}
+
+% ==================== 参考文献 ====================
+\addcontentsline{toc}{section}{参考文献}
+\renewcommand{\refname}{}
+\begin{center}
+    {\zihao{-2}\bfseries 参考文献}
+\end{center}
+\vspace{12bp}
+\begin{thebibliography}{99}
+
+\bibitem{luo2023}
+罗仕华. "双碳"目标下能源系统转型路径规划与优化方法研究[D]. 北京: 清华大学, 2023.
+
+\bibitem{iea2023}
+International Energy Agency. CO\textsubscript{2} Emissions in 2023[R]. Paris: IEA, 2024.
+
+\bibitem{ipcc2022}
+IPCC. Climate Change 2022: Mitigation of Climate Change[R]. Cambridge: Cambridge University Press, 2022.
+
+\bibitem{liu2022}
+刘玮, 万燕鸣, 熊亚林, 等. "双碳"目标下我国低碳清洁氢能进展与展望[J]. 储能科学与技术, 2022, 11(2): 635-646.
+
+\bibitem{lei2022}
+雷海涛. 中国制氢产业技术路径优化研究[D]. 北京: 中国石油大学, 2022.
+
+\bibitem{project2020}
+项目综合报告编写组. 《中国长期低碳发展战略与转型路径研究》综合报告[R]. 北京: 清华大学气候变化与可持续发展研究院, 2020.
+
+\bibitem{wang2020}
+王振华, 王丽, 邹业成, 等. 氢能的应用现状及展望[J]. 山东化工, 2020, 49(16): 104-107.
+
+\bibitem{meng2022}
+孟翔宇, 陈铭韵, 顾阿伦, 等. "双碳"目标下中国氢能发展战略[J]. 天然气工业, 2022, 42(4): 156-179.
+
+\bibitem{zhao2021}
+赵志耘, 李芳. 碳中和技术经济学的理论与实践研究[J]. 中国软科学, 2021(9): 1-13.
+
+\bibitem{han2021}
+韩红梅, 杨铮, 王敏, 等. 我国氢气生产和利用现状及展望[J]. 中国煤炭, 2021, 47(5): 59-63.
+
+\bibitem{yang2023}
+杨丹辉, 尚博闻. 氢能产业高质量发展：产业链建构、重点场景与推进方略[J]. 经济管理, 2023, 45(1): 5-23.
+
+\bibitem{liu_ping2022}
+刘平. 日本迈向碳中和的产业绿色发展战略——基于对《2050年实现碳中和的绿色成长战略》的考察[J]. 日本学刊, 2022(1): 69-88.
+
+\bibitem{li2022}
+李东坡. 日本实现"碳中和"目标的战略选择与政策启示[J]. 亚太经济, 2022(3): 81-90.
+
+\bibitem{irena2022}
+IRENA. Geopolitics of the Energy Transformation: The Hydrogen Factor[R]. Abu Dhabi: International Renewable Energy Agency, 2022.
+
+\bibitem{qu2022}
+曲建升, 曾静静, 李恒吉, 等. 国际碳中和战略行动与科技布局分析及对我国的启示建议[J]. 中国科学院院刊, 2022, 37(4): 444-458.
+
+\bibitem{hydrogen2021}
+Hydrogen Council. Hydrogen for Net-Zero: A Critical Cost-Competitive Energy Vector[R]. Brussels: Hydrogen Council, 2021.
+
+\bibitem{wan2022}
+万燕鸣, 熊亚林, 王雪颖. 全球主要国家氢能发展战略分析[J]. 储能科学与技术, 2022, 11(10): 3401-3410.
+
+\bibitem{zhang2021}
+张浩楠. 面向碳中和的电力低碳转型规划与决策研究[D]. 北京: 华北电力大学, 2021.
+
+\end{thebibliography}
+
+% ==================== 致谢 ====================
+\addcontentsline{toc}{section}{致\quad 谢}
+\begin{center}
+    {\zihao{-2}\bfseries 致\quad 谢}
+\end{center}
+\vspace{12bp}
+
+本论文的完成得益于倪国松老师的悉心指导和宝贵建议，在此表示衷心感谢。在论文写作过程中，老师在选题方向确定、研究方法选择、论文结构设计等方面给予了大量细致的指导，使本文能够顺利完成。同时，感谢文中引用的各位文献作者，他们的研究成果为本论文提供了重要的理论基础和数据支撑。最后，感谢江苏大学提供的良好学习环境和学术资源。
+
+由于本人学识有限，论文中难免存在疏漏和不足之处，恳请各位读者批评指正。
+
+\end{document}

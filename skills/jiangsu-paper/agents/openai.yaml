@@ -1,0 +1,7 @@
+name: 江苏大学课程论文
+description: >
+  撰写符合江苏大学（理工农医教类）格式规范的课程论文。
+  提供 LaTeX 模板、编译配置、图表生成脚本和常见问题排查。
+version: 1.0.0
+author: 超级老付
+tags: [latex, paper, chinese, jiangsu-university, matplotlib]

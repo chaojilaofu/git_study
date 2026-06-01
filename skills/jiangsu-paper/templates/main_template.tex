@@ -1,0 +1,116 @@
+% !TEX program = pdflatex
+\documentclass[12pt,a4paper]{ctexart}
+
+% ========== 页面设置 ==========
+\usepackage[top=2.5cm, bottom=2.5cm, left=3.0cm, right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\parindent=2em
+
+% ========== 字体 ==========
+\usepackage{times}          % 英文 Times New Roman
+
+% ========== 图表支持 ==========
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+
+% ========== 超链接 ==========
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+
+% ========== 页眉页脚 ==========
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\zihao{6}\rmfamily 江苏大学课程论文}
+\fancyhead[R]{\zihao{6}\rmfamily 论文标题}
+\fancyfoot[C]{\zihao{6}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\zihao{6}\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+% ========== 标题格式 ==========
+\ctexset{
+    section/format = \heiti\zihao{3},
+    subsection/format = \songti\bfseries\zihao{4},
+}
+
+\begin{document}
+
+% ==================== 封面 ====================
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{2cm}
+    
+    {\heiti\zihao{2} 论文题目}
+    
+    \vspace{3cm}
+    
+    {\songti\zihao{4}
+    专业班级：××××\hspace{3em}学生姓名：×××
+    
+    \vspace{0.5cm}
+    
+    指导教师：×××\hspace{4.5em}职\quad 称：讲师
+    }
+\end{center}
+
+\vspace{1cm}
+
+% ==================== 中文摘要 ====================
+\begin{center}
+    {\heiti\zihao{4} 摘\quad 要}
+\end{center}
+
+摘要内容。摘要中不得出现引用。
+
+\vspace{12bp}
+\noindent{\heiti\zihao{4} 关键词：} 关键词1；关键词2；关键词3
+
+% ==================== 目录 ====================
+\newpage
+\tableofcontents
+
+% ==================== 正文 ====================
+\newpage
+
+\section{绪论}
+正文内容，引用示例\cite{ref1}。
+
+\subsection{研究背景与意义}
+背景描述。
+
+\section{核心技术分析}
+技术分析正文。图表引用：图\ref{fig:example} 展示了……
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{figures/fig_example.jpg}
+    \captionof{figure}{图表标题}\label{fig:example}
+\end{center}
+
+\section{结论}
+\subsection{主要结论}
+结论内容。结论中不得出现引用。
+
+\subsection{研究展望}
+展望内容。
+
+% ==================== 参考文献 ====================
+\addcontentsline{toc}{section}{参考文献}
+\renewcommand{\refname}{}
+\begin{center}
+    {\zihao{-2}\bfseries 参考文献}
+\end{center}
+\vspace{12bp}
+\begin{thebibliography}{99}
+\bibitem{ref1} 作者一, 作者二. 论文标题[J]. 期刊名, 年份, 卷(期): 页码.
+\bibitem{ref2} 作者三. 书名[M]. 出版地: 出版社, 年份.
+\end{thebibliography}
+
+\end{document}
